@@ -6,7 +6,7 @@ class Skills extends StatefulWidget {
   @override
   State<Skills> createState() => _SkillsState();
 }
-TextEditingController txtSkills = TextEditingController();
+TextEditingController txtSkills = TextEditingController(text: 'Swimming');
 class _SkillsState extends State<Skills> {
   @override
   Widget build(BuildContext context) {

@@ -13,12 +13,12 @@ class Details extends StatefulWidget {
 TextEditingController txtfirst_name = TextEditingController(text: 'Jaydeep');
 TextEditingController txtlast_name = TextEditingController(text: 'Sharma');
 TextEditingController txtEmail = TextEditingController(text: 'sharmajaydeep1515@gmail.com');
-TextEditingController txtProfession = TextEditingController(text: 'Flutter');
+TextEditingController txtProfession = TextEditingController(text: 'Flutter Developer');
 TextEditingController txtNumber = TextEditingController(text: '9079772485');
 TextEditingController txtCountry = TextEditingController(text: 'India');
 TextEditingController txtCity = TextEditingController(text: 'Surat');
-TextEditingController txtAddress = TextEditingController(text: 'dindoli,surat,gujrat');
-TextEditingController txtPortfolio = TextEditingController(text: 'nathing');
+TextEditingController txtAddress = TextEditingController(text: 'Suncity,Dindoli,Surat,Gujrat');
+TextEditingController txtPortfolio = TextEditingController(text: 'https://github.com/Jaydeepsharma');
 
 class _DetailsState extends State<Details> {
   @override

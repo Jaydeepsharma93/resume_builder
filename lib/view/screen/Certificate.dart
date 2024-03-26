@@ -6,8 +6,8 @@ class Certificate extends StatefulWidget {
   @override
   State<Certificate> createState() => _CertificateState();
 }
-TextEditingController txtCertificate = TextEditingController();
-TextEditingController txtInstitute = TextEditingController();
+TextEditingController txtCertificate = TextEditingController(text: 'Flutter Developer');
+TextEditingController txtInstitute = TextEditingController(text: '');
 TextEditingController txtCertificate_description = TextEditingController();
 TextEditingController txt_start = TextEditingController();
 TextEditingController txt_end = TextEditingController();

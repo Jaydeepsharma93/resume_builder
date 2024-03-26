@@ -8,10 +8,10 @@ class Experience extends StatefulWidget {
 }
 
 TextEditingController txtCompany = TextEditingController(text: 'Google');
-TextEditingController txtPosition = TextEditingController(text: '');
-TextEditingController txtDescription = TextEditingController(text: '');
-TextEditingController txtTime_st = TextEditingController(text: '');
-TextEditingController txtTime_end = TextEditingController(text: '');
+TextEditingController txtPosition = TextEditingController(text: 'manager');
+TextEditingController txtDescription = TextEditingController(text: 'Maintains staff by recruiting,\nselecting, orienting, and\ntraining employees.\nEnsures a safe, secure, and\nlegal work environment.\nDevelops personal growth\nopportunities.');
+TextEditingController txtTime_st = TextEditingController(text: '2022');
+TextEditingController txtTime_end = TextEditingController(text: '2024');
 
 class _ExperienceState extends State<Experience> {
   @override

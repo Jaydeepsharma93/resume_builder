@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Language extends StatefulWidget {
-  const Language({super.key});
+class Hobbies extends StatefulWidget {
+  const Hobbies({super.key});
 
   @override
-  State<Language> createState() => _LanguageState();
+  State<Hobbies> createState() => _HobbiesState();
 }
-TextEditingController txtLan = TextEditingController(text: 'English\n\nSpanish');
-class _LanguageState extends State<Language> {
+TextEditingController txtHob = TextEditingController(text: 'Gaming \n\nPainting \n\nPhotography');
+class _HobbiesState extends State<Hobbies> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +17,7 @@ class _LanguageState extends State<Language> {
         ),
         backgroundColor: Colors.deepPurpleAccent,
         title: Text(
-          'Language',
+          'Hobbie',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,

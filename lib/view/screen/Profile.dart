@@ -3,6 +3,11 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 import 'package:resume_builder/view/screen/details.dart';
+import 'package:resume_builder/view/screen/education.dart';
+import 'package:resume_builder/view/screen/experience.dart';
+import 'package:resume_builder/view/screen/hobbie.dart';
+import 'package:resume_builder/view/screen/languages.dart';
+import 'package:resume_builder/view/screen/skills.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -204,30 +209,35 @@ class _ProfileState extends State<Profile> {
                         padding: const EdgeInsets.symmetric(
                           vertical: 15,
                         ),
-                        child: ListTile(
-                          leading: Container(
-                            decoration: BoxDecoration(
-                                color: Color(0xffe8e6f5),
-                                borderRadius: BorderRadius.circular(8)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.language,
-                                color: Color(0xff736d97),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, '/lan');
+                          },
+                          child: ListTile(
+                            leading: Container(
+                              decoration: BoxDecoration(
+                                  color: Color(0xffe8e6f5),
+                                  borderRadius: BorderRadius.circular(8)),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(
+                                  Icons.language,
+                                  color: Color(0xff736d97),
+                                ),
                               ),
                             ),
-                          ),
-                          title: Text(
-                            'Languages',
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Color(0xff221851),
-                                letterSpacing: 1,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          trailing: Icon(
-                            Icons.arrow_forward_ios,
-                            color: Color(0xff8f88b6),
+                            title: Text(
+                              'Languages',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Color(0xff221851),
+                                  letterSpacing: 1,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            trailing: Icon(
+                              Icons.arrow_forward_ios,
+                              color: Color(0xff8f88b6),
+                            ),
                           ),
                         ),
                       ),
@@ -302,30 +312,35 @@ class _ProfileState extends State<Profile> {
                         padding: const EdgeInsets.symmetric(
                           vertical: 15,
                         ),
-                        child: ListTile(
-                          leading: Container(
-                            decoration: BoxDecoration(
-                                color: Color(0xffe8e6f5),
-                                borderRadius: BorderRadius.circular(8)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.sailing,
-                                color: Color(0xff736d97),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, '/hob');
+                          },
+                          child: ListTile(
+                            leading: Container(
+                              decoration: BoxDecoration(
+                                  color: Color(0xffe8e6f5),
+                                  borderRadius: BorderRadius.circular(8)),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(
+                                  Icons.sailing,
+                                  color: Color(0xff736d97),
+                                ),
                               ),
                             ),
-                          ),
-                          title: Text(
-                            'Hobbies',
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Color(0xff221851),
-                                letterSpacing: 1,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          trailing: Icon(
-                            Icons.arrow_forward_ios,
-                            color: Color(0xff8f88b6),
+                            title: Text(
+                              'Hobbies',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Color(0xff221851),
+                                  letterSpacing: 1,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            trailing: Icon(
+                              Icons.arrow_forward_ios,
+                              color: Color(0xff8f88b6),
+                            ),
                           ),
                         ),
                       ),
@@ -333,7 +348,7 @@ class _ProfileState extends State<Profile> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(top: 25, right: 20),
+                            padding: const EdgeInsets.only(top: 25, right: 12),
                             child: FloatingActionButton(
                               onPressed: () {
                                 generatePdf();
@@ -361,34 +376,171 @@ class _ProfileState extends State<Profile> {
 
 Future<void> generatePdf() async {
   final pdf = pw.Document();
+  final img = await imageFromAssetBundle('assets/img/1.png');
+  final img2 = await imageFromAssetBundle('assets/img/2.png');
+  final img3 = await imageFromAssetBundle('assets/img/3.png');
+  final img4 = await imageFromAssetBundle('assets/img/4.png');
+  final image = pw.MemoryImage(imagepath!.readAsBytesSync());
   pdf.addPage(pw.Page(
     pageFormat: PdfPageFormat.a4,
     build: (pw.Context context) {
       return pw.Center(
         child: pw.Row(children: [
           pw.SizedBox(
-            width: 300,
-            child: pw.Column(children: [
-              pw.Row(children: [
-                pw.Container(
-                    height: 130,
-                    width: 130,
-                    decoration: pw.BoxDecoration(color: PdfColors.grey)),
-                pw.Padding(
-                    padding: pw.EdgeInsets.only(left: 20),
-                    child: pw.Column(children: [
-                      pw.Text(txtfirst_name.text,
-                          style: pw.TextStyle(
-                              color: PdfColors.amber,
-                              fontSize: 30,
-                              fontWeight: pw.FontWeight.bold)),
-                      pw.Text(txtlast_name.text,
-                          style: pw.TextStyle(
-                              fontSize: 30, fontWeight: pw.FontWeight.bold)),
-                    ])),
-              ])
-            ]),
+            width: 350,
+            child: pw.Column(
+                crossAxisAlignment: pw.CrossAxisAlignment.start,
+                children: [
+                  pw.Row(children: [
+                    pw.Container(
+                        height: 130,
+                        width: 130,
+                        decoration: pw.BoxDecoration(color: PdfColors.grey),
+                        child: pw.Image(image, fit: pw.BoxFit.cover)),
+                    pw.Padding(
+                      padding: pw.EdgeInsets.only(left: 20),
+                      child: pw.Column(
+                          crossAxisAlignment: pw.CrossAxisAlignment.start,
+                          children: [
+                            pw.Text(txtfirst_name.text,
+                                style: pw.TextStyle(
+                                    color: PdfColors.amber,
+                                    fontSize: 30,
+                                    fontWeight: pw.FontWeight.bold)),
+                            pw.Text(txtlast_name.text,
+                                style: pw.TextStyle(
+                                    fontSize: 30,
+                                    fontWeight: pw.FontWeight.bold)),
+                            pw.Text(
+                              txtProfession.text,
+                              style: pw.TextStyle(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ]),
+                    )
+                  ]),
+                  pw.SizedBox(height: 30),
+                  pw.Text('EXPERIENCE',
+                      style: pw.TextStyle(
+                          fontSize: 25, fontWeight: pw.FontWeight.bold)),
+                  pw.SizedBox(
+                      width: 70,
+                      child: pw.Divider(color: PdfColors.amber, thickness: 4)),
+                  pw.SizedBox(height: 30),
+                  pw.Row(
+                      crossAxisAlignment: pw.CrossAxisAlignment.start,
+                      mainAxisAlignment: pw.MainAxisAlignment.start,
+                      children: [
+                        pw.Column(children: [
+                          pw.Text(txtTime_st.text,
+                              style: pw.TextStyle(color: PdfColors.grey)),
+                          pw.SizedBox(height: 15),
+                          pw.Text(txtTime_end.text,
+                              style: pw.TextStyle(color: PdfColors.grey)),
+                        ]),
+                        pw.SizedBox(width: 40),
+                        pw.Column(
+                            crossAxisAlignment: pw.CrossAxisAlignment.start,
+                            children: [
+                              pw.Text(
+                                txtCompany.text,
+                              ),
+                              pw.SizedBox(height: 15),
+                              pw.Text(txtPosition.text,
+                                  style: pw.TextStyle(color: PdfColors.grey)),
+                              pw.SizedBox(height: 15),
+                              pw.Text(txtDescription.text,
+                                  style: pw.TextStyle(color: PdfColors.grey)),
+                            ])
+                      ]),
+                  pw.SizedBox(height: 30),
+                  pw.Text('EDUCATION',
+                      style: pw.TextStyle(
+                          fontSize: 25, fontWeight: pw.FontWeight.bold)),
+                  pw.SizedBox(
+                      width: 70,
+                      child: pw.Divider(color: PdfColors.amber, thickness: 4)),
+                  pw.SizedBox(height: 30),
+                  pw.Row(
+                      crossAxisAlignment: pw.CrossAxisAlignment.start,
+                      mainAxisAlignment: pw.MainAxisAlignment.start,
+                      children: [
+                        pw.Column(
+                            children: [
+                              pw.Text(txtStart_date.text, style: pw.TextStyle(color: PdfColors.grey)),
+                              pw.SizedBox(height: 15),
+                              pw.Text(txtEnd_date.text, style: pw.TextStyle(color: PdfColors.grey)),
+                            ]
+                        ),
+                        pw.SizedBox(width: 40),
+                        pw.Column(
+                            crossAxisAlignment: pw.CrossAxisAlignment.start,
+                            children: [
+                              pw.Text(txtStudy.text,),
+                              pw.SizedBox(height: 15),
+                              pw.Text(txtInstitute.text, style: pw.TextStyle(color: PdfColors.grey)),
+                            ]
+                        )
+                      ]),
+                ]),
           ),
+          pw.Column(crossAxisAlignment: pw.CrossAxisAlignment.start, children: [
+            pw.Text('CONTACT',
+                style:
+                    pw.TextStyle(fontSize: 25, fontWeight: pw.FontWeight.bold)),
+            pw.SizedBox(
+                width: 70,
+                child: pw.Divider(color: PdfColors.amber, thickness: 4)),
+            pw.SizedBox(height: 10),
+            pw.Image(img),
+            pw.Text(txtNumber.text, style: pw.TextStyle(color: PdfColors.grey)),
+            pw.SizedBox(height: 15),
+            pw.Image(img2),
+            pw.Text(txtEmail.text, style: pw.TextStyle(color: PdfColors.grey)),
+            pw.SizedBox(height: 15),
+            pw.Image(img3),
+            pw.Text(txtPortfolio.text,
+                style: pw.TextStyle(color: PdfColors.grey)),
+            pw.SizedBox(height: 15),
+            pw.Image(img4),
+            pw.Text(txtAddress.text,
+                style: pw.TextStyle(color: PdfColors.grey)),
+            pw.SizedBox(height: 30),
+            pw.Text('SKILLS',
+                style:
+                    pw.TextStyle(fontSize: 25, fontWeight: pw.FontWeight.bold)),
+            pw.SizedBox(
+                width: 70,
+                child: pw.Divider(color: PdfColors.amber, thickness: 4)),
+            pw.SizedBox(height: 10),
+            pw.Row(children: [
+              pw.Text(txtSkills.text,
+                  style: pw.TextStyle(color: PdfColors.grey)),
+              pw.SizedBox(width: 20),
+              pw.SizedBox(
+                  width: 50,
+                  child: pw.Divider(color: PdfColors.amber, thickness: 4)),
+            ]),
+            pw.SizedBox(height: 30),
+            pw.Text('LANGUAGES',
+                style:
+                    pw.TextStyle(fontSize: 25, fontWeight: pw.FontWeight.bold)),
+            pw.SizedBox(
+                width: 70,
+                child: pw.Divider(color: PdfColors.amber, thickness: 4)),
+            pw.SizedBox(height: 10),
+            pw.Text(txtLan.text, style: pw.TextStyle(color: PdfColors.grey)),
+            pw.SizedBox(height: 30),
+            pw.Text('HOBBIES',
+                style:
+                    pw.TextStyle(fontSize: 25, fontWeight: pw.FontWeight.bold)),
+            pw.SizedBox(
+                width: 70,
+                child: pw.Divider(color: PdfColors.amber, thickness: 4)),
+            pw.SizedBox(height: 10),
+            pw.Text(txtHob.text, style: pw.TextStyle(color: PdfColors.grey)),
+          ])
         ]),
       );
     },

@@ -4,7 +4,8 @@ import 'package:resume_builder/view/screen/Profile.dart';
 import 'package:resume_builder/view/screen/details.dart';
 import 'package:resume_builder/view/screen/education.dart';
 import 'package:resume_builder/view/screen/experience.dart';
-import 'package:resume_builder/view/screen/langusges.dart';
+import 'package:resume_builder/view/screen/hobbie.dart';
+import 'package:resume_builder/view/screen/languages.dart';
 import 'package:resume_builder/view/screen/skills.dart';
 import 'package:resume_builder/view/screen/splash.dart';
 
@@ -32,8 +33,9 @@ class _MyAppState extends State<MyApp> {
         '/education': (context) => const Education(),
         '/experience': (context) => const Experience(),
         '/skills': (context) => const Skills(),
-        '/langusges': (context) => const Langusges(),
-        '/certificate': (context) => const Certificate()
+        '/lan': (context) => const Language(),
+        '/certificate': (context) => const Certificate(),
+        '/hob' : (context) => const Hobbies(),
       },
     );
   }

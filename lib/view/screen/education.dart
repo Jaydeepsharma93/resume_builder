@@ -7,11 +7,11 @@ class Education extends StatefulWidget {
   State<Education> createState() => _EducationState();
 }
 
-TextEditingController txtStudy = TextEditingController();
-TextEditingController txtInstitute = TextEditingController();
+TextEditingController txtStudy = TextEditingController(text: 'Diploma in computer sciense');
+TextEditingController txtInstitute = TextEditingController(text: 'swarnim university');
 TextEditingController txtGrade = TextEditingController();
-TextEditingController txtStart_date = TextEditingController();
-TextEditingController txtEnd_date = TextEditingController();
+TextEditingController txtStart_date = TextEditingController(text: '2023');
+TextEditingController txtEnd_date = TextEditingController(text: '2026');
 
 class _EducationState extends State<Education> {
   @override
