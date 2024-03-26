@@ -10,15 +10,15 @@ class Details extends StatefulWidget {
   State<Details> createState() => _DetailsState();
 }
 
-TextEditingController txtfirst_name = TextEditingController();
-TextEditingController txtlast_name = TextEditingController();
-TextEditingController txtEmail = TextEditingController();
-TextEditingController txtProfession = TextEditingController();
-TextEditingController txtNumber = TextEditingController();
-TextEditingController txtCountry = TextEditingController();
-TextEditingController txtCity = TextEditingController();
-TextEditingController txtAddress = TextEditingController();
-TextEditingController txtPortfolio = TextEditingController();
+TextEditingController txtfirst_name = TextEditingController(text: 'Jaydeep');
+TextEditingController txtlast_name = TextEditingController(text: 'Sharma');
+TextEditingController txtEmail = TextEditingController(text: 'sharmajaydeep1515@gmail.com');
+TextEditingController txtProfession = TextEditingController(text: 'Flutter');
+TextEditingController txtNumber = TextEditingController(text: '9079772485');
+TextEditingController txtCountry = TextEditingController(text: 'India');
+TextEditingController txtCity = TextEditingController(text: 'Surat');
+TextEditingController txtAddress = TextEditingController(text: 'dindoli,surat,gujrat');
+TextEditingController txtPortfolio = TextEditingController(text: 'nathing');
 
 class _DetailsState extends State<Details> {
   @override

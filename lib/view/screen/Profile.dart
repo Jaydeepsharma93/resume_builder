@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:printing/printing.dart';
+import 'package:resume_builder/view/screen/details.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -231,64 +235,69 @@ class _ProfileState extends State<Profile> {
                         padding: const EdgeInsets.symmetric(
                           vertical: 15,
                         ),
-                        child: ListTile(
-                          leading: Container(
-                            decoration: BoxDecoration(
-                                color: Color(0xffe8e6f5),
-                                borderRadius: BorderRadius.circular(8)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.workspace_premium,
-                                color: Color(0xff736d97),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, '/certificate');
+                          },
+                          child: ListTile(
+                            leading: Container(
+                              decoration: BoxDecoration(
+                                  color: Color(0xffe8e6f5),
+                                  borderRadius: BorderRadius.circular(8)),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(
+                                  Icons.workspace_premium,
+                                  color: Color(0xff736d97),
+                                ),
                               ),
                             ),
-                          ),
-                          title: Text(
-                            'Certificates',
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Color(0xff221851),
-                                letterSpacing: 1,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          trailing: Icon(
-                            Icons.arrow_forward_ios,
-                            color: Color(0xff8f88b6),
+                            title: Text(
+                              'Certificates',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Color(0xff221851),
+                                  letterSpacing: 1,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            trailing: Icon(
+                              Icons.arrow_forward_ios,
+                              color: Color(0xff8f88b6),
+                            ),
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 15,
-                        ),
-                        child: ListTile(
-                          leading: Container(
-                            decoration: BoxDecoration(
-                                color: Color(0xffe8e6f5),
-                                borderRadius: BorderRadius.circular(8)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.accessibility,
-                                color: Color(0xff736d97),
-                              ),
-                            ),
-                          ),
-                          title: Text(
-                            'Reference',
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Color(0xff221851),
-                                letterSpacing: 1,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          trailing: Icon(
-                            Icons.arrow_forward_ios,
-                            color: Color(0xff8f88b6),
-                          ),
-                        ),
-                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.symmetric(
+                      //     vertical: 15,
+                      //   ),
+                      //   child: ListTile(
+                      //     leading: Container(
+                      //       decoration: BoxDecoration(
+                      //           color: Color(0xffe8e6f5),
+                      //           borderRadius: BorderRadius.circular(8)),
+                      //       child: Padding(
+                      //         padding: const EdgeInsets.all(8.0),
+                      //         child: Icon(
+                      //           Icons.accessibility,
+                      //           color: Color(0xff736d97),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //     title: Text(
+                      //       'Reference',
+                      //       style: TextStyle(
+                      //           fontSize: 20,
+                      //           color: Color(0xff221851),
+                      //           letterSpacing: 1,
+                      //           fontWeight: FontWeight.bold),
+                      //     ),
+                      //     trailing: Icon(
+                      //       Icons.arrow_forward_ios,
+                      //       color: Color(0xff8f88b6),
+                      //     ),
+                      //   ),
+                      // ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                           vertical: 15,
@@ -320,6 +329,24 @@ class _ProfileState extends State<Profile> {
                           ),
                         ),
                       ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 25, right: 20),
+                            child: FloatingActionButton(
+                              onPressed: () {
+                                generatePdf();
+                              },
+                              child: Icon(
+                                Icons.remove_red_eye,
+                                color: Colors.white,
+                              ),
+                              backgroundColor: Colors.deepPurpleAccent,
+                            ),
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 ),
@@ -330,4 +357,43 @@ class _ProfileState extends State<Profile> {
       ),
     );
   }
+}
+
+Future<void> generatePdf() async {
+  final pdf = pw.Document();
+  pdf.addPage(pw.Page(
+    pageFormat: PdfPageFormat.a4,
+    build: (pw.Context context) {
+      return pw.Center(
+        child: pw.Row(children: [
+          pw.SizedBox(
+            width: 300,
+            child: pw.Column(children: [
+              pw.Row(children: [
+                pw.Container(
+                    height: 130,
+                    width: 130,
+                    decoration: pw.BoxDecoration(color: PdfColors.grey)),
+                pw.Padding(
+                    padding: pw.EdgeInsets.only(left: 20),
+                    child: pw.Column(children: [
+                      pw.Text(txtfirst_name.text,
+                          style: pw.TextStyle(
+                              color: PdfColors.amber,
+                              fontSize: 30,
+                              fontWeight: pw.FontWeight.bold)),
+                      pw.Text(txtlast_name.text,
+                          style: pw.TextStyle(
+                              fontSize: 30, fontWeight: pw.FontWeight.bold)),
+                    ])),
+              ])
+            ]),
+          ),
+        ]),
+      );
+    },
+  ));
+  await Printing.layoutPdf(
+    onLayout: (format) => pdf.save(),
+  );
 }

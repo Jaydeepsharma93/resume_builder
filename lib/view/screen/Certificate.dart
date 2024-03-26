@@ -1,19 +1,17 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show AppBar, BorderRadius, BoxDecoration, BuildContext, Center, Colors, Column, Container, CrossAxisAlignment, EdgeInsets, FontWeight, Icon, IconThemeData, Icons, InputDecoration, OutlineInputBorder, Padding, Scaffold, SingleChildScrollView, SizedBox, State, StatefulWidget, Text, TextEditingController, TextField, TextInputAction, TextStyle, Widget;
 
-class Experience extends StatefulWidget {
-  const Experience({super.key});
+class Certificate extends StatefulWidget {
+  const Certificate({super.key});
 
   @override
-  State<Experience> createState() => _ExperienceState();
+  State<Certificate> createState() => _CertificateState();
 }
-
-TextEditingController txtCompany = TextEditingController(text: 'Google');
-TextEditingController txtPosition = TextEditingController(text: '');
-TextEditingController txtDescription = TextEditingController(text: '');
-TextEditingController txtTime_st = TextEditingController(text: '');
-TextEditingController txtTime_end = TextEditingController(text: '');
-
-class _ExperienceState extends State<Experience> {
+TextEditingController txtCertificate = TextEditingController();
+TextEditingController txtInstitute = TextEditingController();
+TextEditingController txtCertificate_description = TextEditingController();
+TextEditingController txt_start = TextEditingController();
+TextEditingController txt_end = TextEditingController();
+class _CertificateState extends State<Certificate> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +21,7 @@ class _ExperienceState extends State<Experience> {
         ),
         backgroundColor: Colors.deepPurpleAccent,
         title: Text(
-          'Experience',
+          'Certificate',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
@@ -40,7 +38,7 @@ class _ExperienceState extends State<Experience> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Company Name',
+                      'Certificate Name',
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.black,
@@ -49,9 +47,9 @@ class _ExperienceState extends State<Experience> {
                     ),
                     TextField(
                       textInputAction: TextInputAction.next,
-                      controller: txtCompany,
+                      controller: txtCertificate,
                       decoration: InputDecoration(
-                          hintText: 'Company Name',
+                          hintText: 'Certificate Name',
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),
                     )
@@ -64,7 +62,7 @@ class _ExperienceState extends State<Experience> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Department',
+                      'Institute Name',
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.black,
@@ -73,9 +71,9 @@ class _ExperienceState extends State<Experience> {
                     ),
                     TextField(
                       textInputAction: TextInputAction.next,
-                      controller: txtPosition,
+                      controller: txtInstitute,
                       decoration: InputDecoration(
-                          hintText: 'Position',
+                          hintText: 'Institute Name',
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),
                     )
@@ -88,7 +86,7 @@ class _ExperienceState extends State<Experience> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Description',
+                      'Certificate Description',
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.black,
@@ -98,7 +96,7 @@ class _ExperienceState extends State<Experience> {
                     TextField(
                       maxLines: 5,
                       textInputAction: TextInputAction.next,
-                      controller: txtDescription,
+                      controller: txtCertificate_description,
                       decoration: InputDecoration(
                           hintText: 'Description',
                           border: OutlineInputBorder(
@@ -113,7 +111,7 @@ class _ExperienceState extends State<Experience> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Start Time',
+                      'Start Date',
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.black,
@@ -122,7 +120,7 @@ class _ExperienceState extends State<Experience> {
                     ),
                     TextField(
                       textInputAction: TextInputAction.next,
-                      controller: txtTime_st,
+                      controller: txt_start,
                       decoration: InputDecoration(
                           suffixIcon: Icon(
                             Icons.date_range_outlined,
@@ -150,7 +148,7 @@ class _ExperienceState extends State<Experience> {
                     ),
                     TextField(
                       textInputAction: TextInputAction.done,
-                      controller: txtTime_end,
+                      controller: txt_end,
                       decoration: InputDecoration(
                           suffixIcon: Icon(
                             Icons.date_range_outlined,

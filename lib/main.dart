@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resume_builder/view/screen/Certificate.dart';
 import 'package:resume_builder/view/screen/Profile.dart';
 import 'package:resume_builder/view/screen/details.dart';
 import 'package:resume_builder/view/screen/education.dart';
@@ -25,13 +26,14 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => Splash(),
-        '/profile': (context) => Profile(),
-        '/detail': (context) => Details(),
-        '/education': (context) => Education(),
-        '/experience': (context) => Experience(),
-        '/skills': (context) => Skills(),
-        '/langusges': (context) => Langusges()
+        '/': (context) => const Splash(),
+        '/profile': (context) => const Profile(),
+        '/detail': (context) => const Details(),
+        '/education': (context) => const Education(),
+        '/experience': (context) => const Experience(),
+        '/skills': (context) => const Skills(),
+        '/langusges': (context) => const Langusges(),
+        '/certificate': (context) => const Certificate()
       },
     );
   }
