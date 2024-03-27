@@ -472,6 +472,7 @@ Future<void> generatePdf() async {
                               pw.SizedBox(height: 15),
                               pw.Text(txtEnd_date.text, style: pw.TextStyle(color: PdfColors.grey)),
                             ]
+
                         ),
                         pw.SizedBox(width: 40),
                         pw.Column(
